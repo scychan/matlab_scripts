@@ -27,7 +27,7 @@ for i = 1:num_files
     if strcmp(filename(end-4:end),'_0001')
         first_slice_names = [first_slice_names;filename];
         %run_numbers(end+1) = str2num(filename(12:14));
-        run_numbers(end+1) = str2num(filename([5:7] + length(subj_prefix)));
+        run_numbers(end+1) = str2num(filename([1:3] + length(subj_prefix)));
         
         if i>1
             prev_filename = filenames{i-1};
