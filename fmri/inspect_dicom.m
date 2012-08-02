@@ -65,3 +65,9 @@ for irun = 1:nruns
 %     fprintf([num2str(run) ': ' value '\n'])
 end
 fclose('all');
+
+%%
+
+run_lengths = length_each_run;
+save('run_lengths','run_lengths')
+
