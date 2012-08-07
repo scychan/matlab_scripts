@@ -53,7 +53,7 @@ for iter = 1:niter
     
     bar(bar_input)
     set(gca,'YLim',[0 1]);
-    set(gca,'xticklabels',labels)
+    set(gca,'xticklabel',labels)
     ylabel('proportion')
     title(sprintf('Iteration %i',iter))
 end
