@@ -7,38 +7,39 @@ function inspect_dicom
 % first_slice_names
 % length_each_run
 
+
+filenames = dir_filenames('*.dcm');
+num_files = length(filenames);
+
 run_numbers = [];
 first_slice_names = [];
 length_each_run = [];
 
-run_number = 0;
-while true
-  run_number = run_number + 1;
-  run_files = dir_filenames([num2str(run_number) '-*.dcm']);
-  
-  if isempty(run_files)
-    break
-  else
-    run_numbers = [run_numbers run_number];
-  end
 
-  currmax = 0;
-  for i = 1:length(run_files)
-    filename = run_files{i};
+for i = 1:num_files
+    filename = filenames{i}
     bname = filename(1:end-4);
-    dashlocs = strfind(filename,'-');
-    imnum = bname(dashlocs(1)+1:end);
-    if strcmp(imnum,'1')
-      first_slice_names = [first_slice_names;{filename}];
+    bnames{i} = bname;
+    dashlocs{i} = strfind(filename,'-');
+    bname(dashlocs{i}(1)+1:end)
+    if strcmp(bname(dashlocs{i}(1)+1:end),'1')
+        first_slice_names = [first_slice_names;{filename}];
+	% run_numbers(end+1) = str2num(filename(12:14)); 
+	% run_numbers(end+1) = str2num(filename([1:3] + length(subj_prefix)));
+	run_numbers(end+1) = str2num(filename([1:(dashlocs{i}(1)-1)]));
+        
+        if i>1
+            prev_bname = bnames{i-1};
+	    length_each_run(end+1) = str2num(prev_bname(dashlocs{i-1}(1)+1:end));
+        end
     end
-    currmax = max(str2num(imnum),currmax);
-  end
-  length_each_run(end+1) = currmax;
 end
-  
+
+last_bname = bnames{num_files};
+%length_each_run(end+1) = str2num(last_filename(end-3:end));
+length_each_run(end+1) = str2num(last_bname( (dashlocs{i}(1)+1):end ));
+
 disp([run_numbers(:),length_each_run(:)])
-
-
 
 %% look at dicom headers
 % interesting headers:
@@ -57,7 +58,6 @@ for irun = 1:nruns
   run = run_numbers(irun);
   whos(first_slice_names{irun})
   header = spm_dicom_headers(first_slice_names{irun});
-  header = header{1};
   headers{irun} = header;
 %  header = headers{irun};
   value = header.SeriesDescription;
