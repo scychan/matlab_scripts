@@ -27,7 +27,7 @@ while true
     filename = run_files{i};
     bname = filename(1:end-4);
     dashlocs = strfind(filename,'-');
-    imnum = bname(dashlocs(1)+1:end);
+    imnum = bname(dashlocs(1)+1:dashlocs(2)-1);
     if strcmp(imnum,'1')
       first_slice_names = [first_slice_names;{filename}];
     end
@@ -44,7 +44,7 @@ disp([run_numbers(:),length_each_run(:)])
 % interesting headers:
 % SeriesDescription
 
-fid = fopen('info.txt','w');
+fid = fopen('../info.txt','w');
 
 third_slice_names = first_slice_names
 %third_slice_names(:,end) = '3';
@@ -72,5 +72,5 @@ fclose('all');
 %%
 
 run_lengths = length_each_run;
-save('run_lengths','run_lengths')
+save('../run_lengths','run_lengths')
 

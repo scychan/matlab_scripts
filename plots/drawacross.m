@@ -1,4 +1,5 @@
-function drawacross(horizvert,val,linestyle)
+% function drawacross(horizvert,val,linestyle,linewidth)
+function drawacross(horizvert,val,linestyle,linewidth)
 
 if ~exist('horizvert')
     horizvert = 'h';
@@ -12,8 +13,12 @@ if ~exist('linestyle')
     linestyle = 'k--';
 end
 
+if ~exist('linewidth')
+    linewidth = 1;
+end
+
 if horizvert=='h'
-    plot(get(gca,'xlim'),[val val],linestyle)
+    plot(get(gca,'xlim'),[val val],linestyle,'linewidth',linewidth)
 elseif horizvert=='v'
-    plot([val val],get(gca,'ylim'),linestyle)
+    plot([val val],get(gca,'ylim'),linestyle,'linewidth',linewidth)
 end
