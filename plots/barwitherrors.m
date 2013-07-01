@@ -1,4 +1,14 @@
 function barwitherrors(x,y,L,varargin)
+% barwitherrors(x,y,L,varargin)
+% 
+% Defaults on optional arguments:
+% 	'barcolor'          'k'
+% 	'errcolor'			'm'
+%   'U'                 L
+%   'width'             0.8
+%   'setylim'           1
+%   'nobars'            0
+
 
 pairs = {...
 	'barcolor'          'k'   ; ...

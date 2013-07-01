@@ -1,4 +1,4 @@
-function B = sortAbyv(A,v)
+function [B,idx] = sortAbyv(A,v)
 % Sort rows of matrix A (m by n) by a column vector v (length m)
 % The vector v indicates the index of each row.
 % Example:  A = [11 11; 12 12; 13 13; 14 14] and v = [3 1 4 2]';
