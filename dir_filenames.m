@@ -32,6 +32,10 @@ end
 
 filenames = filenames';
 
+if length(filenames) == 1
+    filenames = filenames{1};
+end
+
 % 
 % 
 %  z = fullfile(EXPT.SubjectDir{sub},filetype);
