@@ -7,7 +7,7 @@ function ir = ranking(vec,instr,indorval)
 [~,ix] = sort(vec);
 [~,ir] = sort(ix);
 
-if ~isempty(instr)
+if exist('instr','var')
     if strcmp(instr,'val')
         loc = vec==indorval;
     elseif strcmp(instr,'ind')

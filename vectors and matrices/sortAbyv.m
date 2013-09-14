@@ -4,6 +4,10 @@ function [B,idx] = sortAbyv(A,v)
 % Example:  A = [11 11; 12 12; 13 13; 14 14] and v = [3 1 4 2]';
 %           Then B = [12 12; 14 14; 11 11; 13 13]
 
+if isvector(A)
+    A = A(:);
+end
+
 [vals, idx] = sort(v);
 B = A(idx,:);
 

@@ -1,5 +1,12 @@
-% function drawacross(horizvert,val,linestyle,linewidth)
 function drawacross(horizvert,val,linestyle,linewidth)
+% function drawacross(horizvert,val,linestyle,linewidth)
+% 
+% All inputs are optional:
+%   horizvert   - default 'h'
+%   val         - default 0
+%   linestyle   - default 'k--'
+%   linewidth   - default 1
+
 
 if ~exist('horizvert')
     horizvert = 'h';

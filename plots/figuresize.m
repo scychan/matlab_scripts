@@ -1,18 +1,28 @@
-function figuresize(fignum,setting)
-% function figuresize(fignum,setting)
+function figuresize(setting,fignum)
+% function figuresize(setting,[fignum])
 % settings:
-%  fullscreen
-%  quarterscreen
+%  'fullscreen'
+%  'quarterscreen'
+%  'wide'
+%  'long'
+
+if ~exist('fignum','var')
+    fignum = gcf;
+end
 
 scrsz = get(0,'ScreenSize');
+swidth = scrsz(3);
+sheight = scrsz(4);
 
-switch setting
+switch setting % [left bottom width height]
     case 'fullscreen'
-        set(fignum,'Position',[1 scrsz(4) scrsz(3) scrsz(4)]) 
+        set(fignum,'Position',[1 sheight swidth sheight]) 
     case 'quarterscreen'
-        set(fignum,'Position',[1 scrsz(4)/2 scrsz(3)/2 scrsz(4)/2])
+        set(fignum,'Position',[1 sheight/2 swidth/2 sheight/2])
     case 'wide'
-        set(fignum,'Position',[1 scrsz(4)/2 scrsz(3) scrsz(4)/2]) 
+        set(fignum,'Position',[1 sheight/2 swidth sheight/2]) 
+    case 'wide_lower'
+        set(fignum,'Position',[1 1 swidth sheight/2]) 
     case 'long'
-        set(fignum,'Position',[1 scrsz(4) scrsz(3)/2 scrsz(4)]) 
+        set(fignum,'Position',[1 sheight swidth/2 sheight]) 
 end

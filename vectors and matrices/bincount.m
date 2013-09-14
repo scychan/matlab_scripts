@@ -33,7 +33,7 @@ if numel(bins)==1
     xmax = max(x);
     binsize = (xmax-xmin)/10;
     binedges = xmin:binsize:xmax;
-elseif length(varargin)==2
+else
     binedges = bins;
     nbins = length(binedges)-1;
 end
@@ -49,13 +49,13 @@ ybins = cell(nbins,1);
 for ibin = 1:nbins
     bincenters(ibin) = (binedges(ibin) + binedges(ibin+1))/2;
     
-    inbin = x>binedges(ibin) & x<binedges(ibin+1);
+    inbin = x>=binedges(ibin) & x<binedges(ibin+1);
     xbin = x(inbin);
     ybin = y(inbin);
     
-    counts(ibin) = sum(inbin);
-    ymeans(ibin) = mean(ybin);
-    ystds(ibin) = std(ybin);
+    counts(ibin) = nansum(inbin);
+    ymeans(ibin) = nanmean(ybin);
+    ystds(ibin) = nanstd(ybin);
     
     inbins{ibin} = inbin;
     xbins{ibin} = xbin;
