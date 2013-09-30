@@ -1,5 +1,9 @@
 function r = bindata(E,rbin)
-
+% function r = bindata(E,rbin)
+% 
+% For each row of E, divides the data into bins of size rbin, and then
+% finds the sum of each bin.
+% 
 % E can have multiple rows/trials
 % rbin is the number of timepoints in each bin
 

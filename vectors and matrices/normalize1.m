@@ -1,7 +1,7 @@
 function y = normalize1(x,dir)
 % If x is a vector, normalize the vector to 1
-% If x is a matrix and dir='c', normalize the columns to 1.
-% If x is a matrix and dir='r', normalize the rows to 1.
+% If x is a matrix and dir='c', normalize the columns to sum to 1.
+% If x is a matrix and dir='r', normalize the rows to sum to 1.
 
 if isvector(x)
 
