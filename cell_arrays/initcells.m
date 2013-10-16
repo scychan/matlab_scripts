@@ -1,4 +1,5 @@
 function [] = initcells(variable_names,cellsize)
+% function [] = initcells(variable_names,cellsize)
 
 nvars = length(variable_names);
 
