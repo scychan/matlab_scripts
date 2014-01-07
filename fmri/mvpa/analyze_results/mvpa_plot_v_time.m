@@ -2,6 +2,11 @@
 %it returns a plot of how strongly it identified with each category at
 %any particulat moment, as well as what the correct category was. It plots
 %in both the forward and backward directions.
+% 
+% INPUTS
+% results - results from MVPA
+% labels - labels for the categories
+% iter_to_plot - optional
 
 function h = mvpa_plot_v_time(results,labels,iter_to_plot)
 
