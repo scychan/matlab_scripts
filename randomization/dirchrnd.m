@@ -1,7 +1,13 @@
 function r = dirchrnd(alpha,N)
+% function r = dirchrnd(alpha,N)
+% 
 % take a sample from a dirichlet distribution
 %   alpha - parameter vector
-%   N     - number of samples
+%   N     - [optional] number of samples (default = 1)
+
+if ~exist('N','var')
+    N = 1;
+end
 
 alpha = horz(alpha);
 p = length(alpha); % length of param vec
