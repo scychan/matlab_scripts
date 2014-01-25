@@ -1,4 +1,5 @@
 function [V XYZ] = load_nifti(filename)
+% function [V XYZ] = load_nifti(filename)
 
 vol = spm_vol(filename);
 
