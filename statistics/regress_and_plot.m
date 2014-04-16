@@ -1,19 +1,49 @@
-function reginfo = regress_and_plot(x,y)
+function reginfo = regress_and_plot(x,y,varargin)
+% function reginfo = regress_and_plot(x,y)
+% 
+% INPUTS:
 % x = regressor (vector)
 % y = data to be regressed (vector)
+% 
+% OPTIONAL INPUTS:
+% 'regtype' - 'linear' or 'logistic' (default 'linear')
+
+argpairs = {'regtype'    'linear'};
+parseargs(varargin,argpairs);
 
 % make sure x and y are column vectors
 x = x(:);
 y = y(:);
 
-% do the regression
-[b,bint,r,rint,stats] = regress(y,[x ones(size(x))]);
-reginfo = var2struct(b,bint,r,rint,stats);
-
 % scatter plot the points
 scatter(x,y)
 
+% do the regression
+switch regtype
+    case 'linear'
+        [b,bint,r,rint,stats] = regress(y,[x ones(size(x))]);
+        reginfo = var2struct(b,bint,r,rint,stats);
+                
+    case 'logistic'
+        [b,dev,stats] = glmfit(x,y,'binomial','link','logit');
+        xx = linspace(min(x),max(x));
+        yfit = glmval(b,xx,'logit');
+        reginfo = var2struct(b,dev,stats);    
+end
+
 % draw the regression line
-hold on
-xlims = get(gca,'xlim');
-plot(xlims,xlims*b(1) + b(2));
+switch regtype
+    case 'linear'
+        hold on
+        xlims = get(gca,'xlim');
+        plot(xlims,xlims*b(1) + b(2));
+        
+    case 'logistic'
+        hold on
+        plot(xx,yfit,'linewidth',2)
+        ylim([0 1])
+        drawacross('h',0.5')
+        drawacross('v',0)
+end
+       
+        
