@@ -27,13 +27,17 @@ else
 end
 end
 
+washold = ishold;
+
 hold on ;
 if ischar(errcolor)
 errorbar(x,y,L,U,[errcolor,'+'],'LineWidth',2);
 else
 errorbar(x,y,L,U,'+','LineWidth',2,'color',errcolor);
 end
-hold off ;
+if ~washold
+    hold off
+end
 
 if logical(setylim) && min(L)>0
     ylim([min(y)-1.1*max(L), max(y)+1.1*max(L)])
