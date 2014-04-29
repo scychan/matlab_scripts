@@ -1,5 +1,5 @@
 function catseye(boots,offset,eyewidth,varargin)
-% function catseye(boots,p,horzvert,offset,eyewidth,nhist,fillcolor)
+% function catseye(boots,offset,eyewidth,varargin)
 %
 % INPUTS:
 % boots     - the bootstrap distribution of interest
@@ -7,7 +7,7 @@ function catseye(boots,offset,eyewidth,varargin)
 % eyewidth  - the width of the cat's eye
 %
 % OPTIONAL INPUTS
-% p         - the p-value for the desired confidence interval (e.g. 0.05)
+% alpha     - the alpha-value for the desired confidence interval (e.g. 0.05)
 % sided     - 'both', 'lower', or 'upper'
 % horzvert  - 'h' or 'v'
 % CIonly    - set to 1 if only the part corresponding to the CI is desired
@@ -15,7 +15,7 @@ function catseye(boots,offset,eyewidth,varargin)
 % fillcolor - color of the plot, e.g. 'k'
 
 pairs = {...
-    'p'             0.05
+    'alpha'         0.05
     'sides'         'both'
     'horzvert'      'v'
     'CIonly'        0
@@ -23,18 +23,18 @@ pairs = {...
     'fillcolor'     'k'
     }; parseargs(varargin, pairs);
 
-%% find the confidence interval for p
+%% find the confidence interval for alpha
 
 switch sides
     case 'both'
-        lower = prctile(boots,100*p/2);
-        upper = prctile(boots,100*(1 - p/2));
+        lower = prctile(boots,100*alpha/2);
+        upper = prctile(boots,100*(1 - alpha/2));
     case 'lower'
-        lower = prctile(boots,100*p);
+        lower = prctile(boots,100*alpha);
         upper = max(boots);
     case 'upper'
         lower = min(boots);
-        upper = prctile(boots,100*(1 - p));
+        upper = prctile(boots,100*(1 - alpha));
 end
 
 %% compute the histogram for the bootstrap distribution
