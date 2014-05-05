@@ -13,5 +13,7 @@ vol = spm_vol(filename);
 
 [V, XYZ] = spm_read_vols(vol);
 
-delete(filename)
-delete([filename '.gz'])
+if strfind(filename,'/tmp/')
+    delete(filename)
+    delete([filename '.gz'])
+end
