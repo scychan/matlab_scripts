@@ -1,4 +1,4 @@
-function catseye(boots,offset,eyewidth,varargin)
+function CI = catseye(boots,offset,eyewidth,varargin)
 % function catseye(boots,offset,eyewidth,varargin)
 %
 % INPUTS:
@@ -29,12 +29,15 @@ switch sides
     case 'both'
         lower = prctile(boots,100*alphaCI/2);
         upper = prctile(boots,100*(1 - alphaCI/2));
+        CI = [lower upper];
     case 'lower'
         lower = prctile(boots,100*alphaCI);
         upper = max(boots);
+        CI = [lower nan];
     case 'upper'
         lower = min(boots);
         upper = prctile(boots,100*(1 - alphaCI));
+        CI = [nan upper];
 end
 
 %% compute the histogram for the bootstrap distribution
