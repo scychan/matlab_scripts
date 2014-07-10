@@ -1,4 +1,9 @@
-function volume = convert3D_and_savenii(data,brainmask,filename)
+function volume = convert3D_and_savenii(data,brainmask,voxelsize,filename,origin)
+% function volume = convert3D_and_savenii(data,brainmask,voxelsize,filename[,origin])
+
+if ~exist('origin','var')
+    origin = [];
+end
 
 % basics
 brainmask_inds = find(brainmask);
@@ -15,9 +20,5 @@ else
     end
 end
 
-% convert to nifti
-nii = make_nii(volume,[3 3 3]);
-
-% save as .nii.gz
-save_nii(nii,filename)
-unix(sprintf('gzip %s',filename));
+% save as .nii or .nii.gz
+save_nifti(volume,filename,voxelsize,origin)

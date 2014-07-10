@@ -1,4 +1,5 @@
 function save_nifti(volume,filename,voxelsize,origin)
+% function save_nifti(volume,filename,voxelsize,origin)
 
 % convert to nifti
 if ~exist('origin','var')
