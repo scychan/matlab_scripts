@@ -19,6 +19,10 @@ pairs = {...
     'nobars'            0; ...
 }; parseargs(varargin, pairs);
 
+if isempty(x)
+    x = 1:length(y);
+end
+
 if nobars==0
 if ischar(barcolor)
     bar(x,y,width,barcolor)
