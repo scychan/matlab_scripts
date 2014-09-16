@@ -8,6 +8,7 @@ function barwitherrors(x,y,L,varargin)
 %   'width'             0.8
 %   'setylim'           1
 %   'nobars'            0
+%   'basevalue'          0
 
 
 pairs = {...
@@ -17,6 +18,7 @@ pairs = {...
     'width'             0.8; ...
     'setylim'           0; ...
     'nobars'            0; ...
+    'basevalue'          0; ...
 }; parseargs(varargin, pairs);
 
 if isempty(x)
@@ -24,12 +26,13 @@ if isempty(x)
 end
 
 if nobars==0
-if ischar(barcolor)
-    bar(x,y,width,barcolor)
-else
-    bar(x,y,width,'facecolor',barcolor)
+    if ischar(barcolor)
+        barhandle = bar(x,y,width,barcolor,'basevalue',basevalue);
+    else
+        barhandle = bar(x,y,width,'facecolor',barcolor,'basevalue',basevalue);
+    end
 end
-end
+
 
 washold = ishold;
 
