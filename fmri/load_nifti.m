@@ -5,9 +5,9 @@ function [V, XYZ] = load_nifti(filename)
 if strcmp(filename(end-2:end),'.gz')
     if isdella
         try
-            seed = getenv('SLURM_JOBID');
+            seed = str2num(getenv('SLURM_JOBID'));
         catch
-            seed = getenv('SLURM_ARRAY_JOB_ID') * getenv('SLURM_ARRAY_TASK_ID');
+            seed = str2num(getenv('SLURM_ARRAY_JOB_ID')) * str2num(getenv('SLURM_ARRAY_TASK_ID'));
         end
         rand('twister', seed)
     elseif isrondo
