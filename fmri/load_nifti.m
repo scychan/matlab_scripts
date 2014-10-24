@@ -13,10 +13,10 @@ if strcmp(filename(end-2:end),'.gz')
     elseif isrondo
         error('need to write this')
     else
-        setseedwclock
+        setseedwclock;
     end
     tempname = sprintf('tempnifti%i',round(rand*100000));
-    copyfile(filename,sprintf('/tmp/%s.nii.gz',tempname));
+    unix(sprintf('cp %s %s',filename,sprintf('/tmp/%s.nii.gz',tempname)));
     gunzip(sprintf('/tmp/%s.nii.gz',tempname));
     filename = sprintf('/tmp/%s.nii',tempname);
 end
