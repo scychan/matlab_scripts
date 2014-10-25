@@ -5,13 +5,18 @@ function [V, XYZ] = load_nifti(filename)
 if strcmp(filename(end-2:end),'.gz')
     if isdella
         try
-            seed = str2num(getenv('SLURM_JOBID'));
+            seed = str2double(getenv('SLURM_JOBID'));
         catch
-            seed = str2num(getenv('SLURM_ARRAY_JOB_ID')) * str2num(getenv('SLURM_ARRAY_TASK_ID'));
+            seed = str2double(getenv('SLURM_ARRAY_JOB_ID')) * str2double(getenv('SLURM_ARRAY_TASK_ID'));
         end
         rand('twister', seed)
     elseif isrondo
-        error('need to write this')
+        try
+            seed = str2double(getenv('JOB_ID'));
+        catch
+            seed = str2double(getenv('JOB_ID')) * str2double(getenv('SGE_TASK_ID'));
+        end
+        rand('twister', seed)
     else
         setseedwclock;
     end
