@@ -11,10 +11,9 @@ if strcmp(filename(end-2:end),'.gz')
         end
         rand('twister', seed)
     elseif isrondo
-        try
+        seed = str2double(getenv('JOB_ID')) * str2double(getenv('SGE_TASK_ID'));
+        if isnan(seed)
             seed = str2double(getenv('JOB_ID'));
-        catch
-            seed = str2double(getenv('JOB_ID')) * str2double(getenv('SGE_TASK_ID'));
         end
         rand('twister', seed)
     else
