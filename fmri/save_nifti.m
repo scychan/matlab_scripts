@@ -3,7 +3,8 @@ function save_nifti(volume,filename,voxelsize,origin)
 
 % convert to nifti
 if ~exist('origin','var')
-    if all(size(volume) == [91 109 91])
+    volsize = size(volume);
+    if all(volsize(1:3) == [91 109 91])
         origin = [46 64 37];
     else
         origin = [];
