@@ -1,5 +1,4 @@
-function [acts scratchpad] = test_libsvm 
-(testpats,testtargs,scratchpad) 
+function [acts scratchpad] = test_libsvm(testpats,testtargs,scratchpad) 
 
 % Testing function for LIBSVM 
 % 
