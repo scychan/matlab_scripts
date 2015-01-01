@@ -55,7 +55,7 @@ function [scratch] = train_libsvm(trainpats,traintargs,in_args,cv_args)
 % you have related to the use of the MVPA toolbox. 
 % 
 % 
-====================================================================== 
+% ====================================================================== 
 
 % 02.27.09 - REHBM - created specific LIBSVM train function to 
 %                    distinguish from SVMLIGHT functions 
