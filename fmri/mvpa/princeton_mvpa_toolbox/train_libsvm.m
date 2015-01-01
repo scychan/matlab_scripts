@@ -1,5 +1,5 @@
-function [scratch] = train_libsvm 
-(trainpats,traintargs,in_args,cv_args) 
+function [scratch] = train_libsvm(trainpats,traintargs,in_args,cv_args) 
+
 % USAGE : 
 % [SCRATCH] = TRAIN_LIBSVM(TRAINPATS,TRAINTARGS,IN_ARGS,CV_ARGS) 
 % 
