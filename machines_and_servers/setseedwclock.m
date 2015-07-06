@@ -1,4 +1,4 @@
-function setseedwclock(verbose)
+function seed = setseedwclock(verbose)
 % sets the seed for RandStream using the clock, so that results are
 % different for each run
 
