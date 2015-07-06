@@ -15,7 +15,7 @@ nii = make_nii(volume,voxelsize,origin);
 % save as .nii.gz OR .nii
 if strfind(filename,'.nii.gz')
     save_nii(nii,filename(1:end-3))
-    unix(sprintf('gzip %s',filename(1:end-3)));
+    unix(sprintf('gzip -f %s',filename(1:end-3)));
 else
     save_nii(nii,filename)
 end

@@ -20,7 +20,7 @@ function [acts scratchpad] = test_libsvm(testpats,testtargs,scratchpad)
 % you have related to the use of the MVPA toolbox. 
 % 
 % 
-% ====================================================================== 
+%====================================================================== 
 
 % 02.27.09 - REHBM - created specific LIBSVM train function to 
 %                    distinguish from SVMLIGHT functions 
