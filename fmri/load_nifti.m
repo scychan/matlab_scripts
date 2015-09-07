@@ -1,5 +1,9 @@
-function [V, XYZ] = load_nifti(filename)
-% function [V XYZ] = load_nifti(filename)
+function [V, XYZ] = load_nifti(filename,doflip)
+% function [V XYZ] = load_nifti(filename[,doflip])
+
+if ~exist('doflip','var')
+    doflip = 0;
+end
 
 % gunzip if necessary
 if strcmp(filename(end-2:end),'.gz')
@@ -28,6 +32,13 @@ end
 vol = spm_vol(filename);
 
 [V, XYZ] = spm_read_vols(vol);
+
+% flip left/right
+if doflip
+    for z = 1:size(V,3)
+        V(:,:,z) = flipud(V(:,:,z));
+    end
+end
 
 if strfind(filename,'/tmp/')
     delete(filename)
