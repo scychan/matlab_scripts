@@ -33,7 +33,7 @@ function [subj] = create_nested_xvalid_indices(subj,runs_selname,varargin)
 % This runs vector should not include any zeros. You should use the
 % ACTIVES_SELNAME to censor runs
 %
-% NEW_SELSTEM (optional, default = runs_selname + 'xval'). This
+% NEW_SELSTEM (optional, default = runs_selname + 'nested_xval'). This
 % determines the group_name and stem for the selector groups that
 % will be created
 %
