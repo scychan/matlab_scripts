@@ -7,7 +7,7 @@ function equalize_subplot_axes(x_or_y, figure_number, m, n, subplots, range)
 %               {cell of vectors} - sets of subplots to equalize within
 %               'r'       - equalize within each row
 %               'c'       - equalize within each column
-%               (optional - defaults to 'all subplots')
+%               (optional - defaults to 'all subplots' if empty)
 %
 %   range    - [axis_lower_limit axis_upper_limit]
 %               (optional - defaults to [min max] across subplots)

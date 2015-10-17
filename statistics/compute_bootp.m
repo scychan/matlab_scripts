@@ -1,6 +1,8 @@
 function [bootp, bootsamples] = compute_bootp(data,greaterthan_or_lessthan,threshold,nboot)
 % function [bootp, bootsamples] = compute_bootp(data,greaterthan_or_lessthan,threshold[,nboot])
 % 
+% NOTE: This is a one-sided test
+% 
 % default nboot = 10,000
 
 N = length(data);

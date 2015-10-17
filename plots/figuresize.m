@@ -23,6 +23,8 @@ switch setting % [left bottom width height]
         set(fignum,'Position',[1 sheight/2 swidth sheight/2]) 
     case 'wide_lower'
         set(fignum,'Position',[1 1 swidth sheight/2]) 
+    case 'wide_skinny'
+        set(fignum,'Position',[1 sheight/4 swidth sheight/4]) 
     case 'long'
         set(fignum,'Position',[1 sheight swidth/2 sheight]) 
 end
