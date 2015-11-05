@@ -1,5 +1,5 @@
 function stars = sigstars(pval,show_direction)
-% n = numsigstars(pval[, show_direction])
+% stars = sigstars(pval[, show_direction])
 %
 % show_direction
 %  - optional (defaults to 0)
