@@ -1,9 +1,11 @@
-function stars = sigstars(pval,show_direction)
-% stars = sigstars(pval[, show_direction])
+function stars = sigstars(pval,show_direction,maxstars)
+% stars = sigstars(pval[, show_direction, maxstars])
 %
 % show_direction
 %  - optional (defaults to 0)
 %  => if true, also check for p > 0.95, and return symbols as '+' or '-'
+% maxstars
+%  - optional (defaults to 8)
 
 if ~exist('show_direction','var')
     show_direction = 0;
@@ -22,6 +24,9 @@ end
 
 % how many stars
 sigthresh = [0.05, 0.01, 0.005, 0.001, 0.0005, 0.0001, 0.00005, 0.00001];
+if exist('maxstars','var')
+    sigthresh = sigthresh(1:maxstars);
+end
 nstars = 0;
 for i = 1:length(sigthresh)
     if pval <= sigthresh(i)
