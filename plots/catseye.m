@@ -9,9 +9,9 @@ function CI = catseye(boots,offset,eyewidth,varargin)
 % OPTIONAL INPUTS
 % alphaCI  - the alpha-value for the desired confidence interval (e.g. 0.05)
 % sided     - 'both', 'lower', or 'upper'
-% horzvert  - 'h' or 'v'
+% horzvert  - 'v' or 'h'
 % CIonly    - set to 1 if only the part corresponding to the CI is desired
-% nhist     - number of histogram bins (might want to try different values until curves look smooth)
+% nhist     - default 15 - number of histogram bins (might want to try different values until curves look smooth)
 % fillcolor - color of the plot, e.g. 'k'
 
 pairs = {...
