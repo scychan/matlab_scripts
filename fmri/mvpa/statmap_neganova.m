@@ -1,5 +1,8 @@
 function [subj] = statmap_neganova(subj,data_patname,regsname,selname,new_map_patname,extra_arg)
 
+% EDITED BY SCYCHAN 2015.11.22 -- from statmap_anova.m
+% EDITS ARE MARKED BELOW
+%
 % Use the anova to select features that vary between conditions
 %
 % [SUBJ] = STATMAP_ANOVA(SUBJ,DATA_PATNAME,REGSNAME,NEW_MAP_PATNAME,EXTRA_ARG);
@@ -69,7 +72,7 @@ if args.use_mvpa_ver
 else
   p = run_mathworks_anova(pat,regs);
 end
-p = -p; % THIS IS THE ONLY LINE CHANGED BY SCYCHAN 2015.11.22
+p = -p; % ADDED BY SCYCHAN
 
 % Now create a new pattern object to house the statmap with the p
 % values in it
