@@ -4,8 +4,7 @@ function mvpa_view_timecourses(acts,desireds,timepoints)
 % View classifier output timecourse for a single iteration.
 % 'timepoints' input is optional
 
-% clear figure
-clf; hold on
+hold on
 
 % basics
 [ncats ntimepts] = size(acts);
