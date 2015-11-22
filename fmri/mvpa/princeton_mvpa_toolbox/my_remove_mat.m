@@ -34,7 +34,7 @@ if nargin~=3
 end
 
 objinfo = get_object(subj,objtype,objname);
-switch objinfo.matsize
+switch length(objinfo.matsize)
     case 2
         empty_mat = [];
     case 3
