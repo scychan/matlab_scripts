@@ -18,7 +18,7 @@ if add_ones
     x = [x ones(size(y))];
 end
 
-[B,BINT,R,RINT,STATS] = regress(y,[x ones(size(x))]);
+[B,BINT,R,RINT,STATS] = regress(y,x);
 
 %% plot
 
