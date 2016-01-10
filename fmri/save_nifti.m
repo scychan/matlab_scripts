@@ -1,6 +1,9 @@
 function save_nifti(volume,filename,voxelsize,origin)
 % function save_nifti(volume,filename,voxelsize [,origin])
 
+% check for NaN
+assert(~any(isnan(volume(:))))
+
 % convert to nifti
 if ~exist('origin','var')
     volsize = size(volume);
