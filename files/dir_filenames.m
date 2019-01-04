@@ -59,19 +59,3 @@ filenames = filenames';
 if length(filenames) == 1
     filenames = filenames{1};
 end
-
-% 
-% 
-%  z = fullfile(EXPT.SubjectDir{sub},filetype);
-%         name = dir(fullfile(z,fname));
-%         files = dir2char(name,z);
-%         
-%         
-% 
-% function x = dir2char(f,d)
-%     
-%     for i = 1:length(f)
-%         x(i,:) = fullfile(d,f(i).name);
-%     end
-%     
-% end

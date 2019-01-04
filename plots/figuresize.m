@@ -5,6 +5,8 @@ function figuresize(setting,fignum)
 %  'quarterscreen'
 %  'wide'
 %  'long'
+%
+% Stephanie Chan
 
 if ~exist('fignum','var')
     fignum = gcf;

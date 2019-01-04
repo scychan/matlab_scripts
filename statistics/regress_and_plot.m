@@ -6,7 +6,8 @@ function reginfo = regress_and_plot(x,y,varargin)
 % y = data to be regressed (vector)
 % 
 % OPTIONAL INPUTS:
-% 'regtype' - 'linear' or 'logistic' (default 'linear')
+% 'regtype' - options: linear, logistic, robust
+%             (default = 'linear')
 
 argpairs = {'regtype'    'linear'};
 parseargs(varargin,argpairs);
@@ -29,6 +30,10 @@ switch regtype
         xx = linspace(min(x),max(x));
         yfit = glmval(b,xx,'logit');
         reginfo = var2struct(b,dev,stats);    
+        
+    case 'robust'
+        [b,stats] = robustfit(x,y);
+        reginfo = var2struct(b,stats);
 end
 
 % draw the regression line
@@ -44,6 +49,11 @@ switch regtype
         ylim([0 1])
         drawacross('h',0.5')
         drawacross('v',0)
+                
+    case 'robust'
+        hold on
+        xlims = get(gca,'xlim');
+        plot(xlims,xlims*b(2) + b(1));
 end
        
         
